@@ -1,0 +1,178 @@
+pragma solidity ^0.4.23;
+
+
+import "../ownable/ownable.sol";
+import "../storage/sow.storage.state.sol";
+import "../util/safemath.sol";
+import "../util/AddressUtils.sol";
+import "../logic/sow.header.sol";
+
+
+/*
+address of proposer
+address of acceptor
+address of consultant
+bool isActive
+bool isExpired
+effectiveDate: DataTypes.DATE, // start date
+commencementDateOfServices: DataTypes.DATE,
+completionDateOfServices: DataTypes.DATE,
+projectName,
+rate,
+weekStartDay
+
+*/
+
+contract SOWContractV1 is SOWHeader, SOWStorageState {
+    // Import safeMath for operations.
+    using SafeMath for uint256;
+    using AddressUtils for address; 
+
+    modifier onlyActive() {
+        require(_storage.getBool("isActive") == true);
+        _;
+    }
+
+     modifier notActive() {       
+        require(_storage.getBool("isActive") == false);
+        _;
+    }  
+
+    modifier notExpired(){
+         require(_storage.getBool("isExpired") == false);
+        _;
+    }
+
+    modifier onlyProposed() {
+         require(_storage.getAddress("proposer") != address(0));
+        _;
+    }
+
+    function setName(string _contractName) 
+        public
+        notActive
+        notExpired
+        returns(bool)
+    {
+        _storage.setString("contractName", _contractName);
+        emit SOWNameSet(_contractName);
+        return true;
+    }
+
+    function setProposerAddress(address _proposerAddress) 
+         public 
+         notActive 
+         notExpired
+         returns(bool) 
+    {
+        require(_proposerAddress != address(0), "Proposer Address is a zero address, not allowed.");
+        //require(_proposerAddress.isContract() == false, "Proposer Address is a contract address, not allowed");       
+        _storage.setAddress("proposer", _proposerAddress);
+        emit SOWProposed(_proposerAddress,  getName());
+        return true;
+    }
+
+    function setAcceptorAddress(address _acceptorAddress) 
+        public 
+        notActive 
+        notExpired
+        onlyProposed        
+        returns (bool) 
+    {
+        require(_acceptorAddress != address(0), "Proposer Address is a zero address, not allowed.");
+        //require(_acceptorAddress.isContract() == false, "Proposer Address is a contract address, not allowed");
+        _storage.setAddress("acceptor", _acceptorAddress);
+        emit SOWAccepted(_acceptorAddress,  getName());
+        setActive();
+        return true;
+    }
+
+    function setWorkerAddress(address _workerAddress) 
+        public 
+        onlyActive 
+        notExpired 
+        onlyProposed  
+        returns (bool) 
+    {
+        require(_workerAddress != address(0), "Worker Address is a zero address, not allowed.");
+        //require(_workerAddress.isContract() == false, "Proposer Address is a contract address, not allowed");
+        _storage.setAddress("workerx", _workerAddress);
+        emit SOWWorkerAdded(_workerAddress, getName());
+        return true;
+    }
+
+    function setStartDate(uint256 _startDate) 
+        public
+        notActive 
+        notExpired 
+        returns (bool)
+    {
+        _storage.setUint("startDate",_startDate);
+        emit SOWStartDateSet(_startDate, getName());
+        return true;
+    }
+
+     function setEndDate(uint256 _endDate) 
+        public
+        notActive 
+        notExpired 
+        returns (bool)
+    {
+        _storage.setUint("endDate",_endDate);
+        emit SOWEndDateSet(_endDate, getName());
+        return true;
+    }
+
+    function setRate(uint256 _rate) 
+        public
+        notExpired
+        returns (bool)
+    {
+         _storage.setUint("rate",_rate);
+        emit SOWRateSet(_rate, getName());
+        return true;
+    }
+
+    function setActive() 
+        private
+        notActive 
+        notExpired
+        returns (bool)
+    {
+        // require
+        require(_storage.getAddress("proposer") != address(0));
+        require(_storage.getAddress("acceptor") != address(0));
+        //require(_storage.getAddress("worker") != address(0));
+        // check dates
+        // check rates
+         _storage.setBool("isActive", true);
+         emit SOWIsActive(getName());
+         return true;
+    }
+
+    function setExpired() 
+        private
+        onlyActive
+        returns (bool)
+    {        
+         _storage.setBool("isExpired", true);
+         emit SOWIsExpired(getName());
+         return true;
+    }
+
+    function getName()
+        private
+        view
+        returns (string)
+    {
+        return _storage.getString("contractName");
+    }
+
+    function checkActive()
+        public
+        view
+        returns (bool)
+    {
+        return  _storage.getBool("isActive");
+    }
+}

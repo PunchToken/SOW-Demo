@@ -1,0 +1,173 @@
+{
+  "contractName": "ProxyData",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "_implementation",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x608060405234801561001057600080fd5b5060e98061001f6000396000f300608060405260043610603f576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806359679b0f146044575b600080fd5b348015604f57600080fd5b5060566098565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff16815600a165627a7a72305820b2065332b29a5606e389558824790aa02e26ed2ae4943579ffafdeff573d36500029",
+  "deployedBytecode": "0x608060405260043610603f576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806359679b0f146044575b600080fd5b348015604f57600080fd5b5060566098565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff16815600a165627a7a72305820b2065332b29a5606e389558824790aa02e26ed2ae4943579ffafdeff573d36500029",
+  "sourceMap": "217:66:6:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;217:66:6;;;;;;;",
+  "deployedSourceMap": "217:66:6:-;;;;;;;;;;;;;;;;;;;;;;;;243:30;;8:9:-1;5:2;;;30:1;27;20:12;5:2;243:30:6;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
+  "source": "pragma solidity ^0.4.23;\n\n/**\n * @title Ownable\n * @dev The Ownable contract has an owner address, and provides basic authorization control\n * functions, this simplifies the implementation of \"user permissions\".\n */\n\ncontract ProxyData {\n     address public _implementation;       \n}",
+  "sourcePath": "/Users/dennismacpro/Ascension/SOW-Demo/sow-contracts/contracts/proxy/sow.proxy.data.sol",
+  "ast": {
+    "absolutePath": "/Users/dennismacpro/Ascension/SOW-Demo/sow-contracts/contracts/proxy/sow.proxy.data.sol",
+    "exportedSymbols": {
+      "ProxyData": [
+        169
+      ]
+    },
+    "id": 170,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 166,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".23"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:6"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": "@title Ownable\n@dev The Ownable contract has an owner address, and provides basic authorization control\nfunctions, this simplifies the implementation of \"user permissions\".",
+        "fullyImplemented": true,
+        "id": 169,
+        "linearizedBaseContracts": [
+          169
+        ],
+        "name": "ProxyData",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 168,
+            "name": "_implementation",
+            "nodeType": "VariableDeclaration",
+            "scope": 169,
+            "src": "243:30:6",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 167,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "243:7:6",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 170,
+        "src": "217:66:6"
+      }
+    ],
+    "src": "0:283:6"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/dennismacpro/Ascension/SOW-Demo/sow-contracts/contracts/proxy/sow.proxy.data.sol",
+    "exportedSymbols": {
+      "ProxyData": [
+        169
+      ]
+    },
+    "id": 170,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 166,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".23"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:6"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": "@title Ownable\n@dev The Ownable contract has an owner address, and provides basic authorization control\nfunctions, this simplifies the implementation of \"user permissions\".",
+        "fullyImplemented": true,
+        "id": 169,
+        "linearizedBaseContracts": [
+          169
+        ],
+        "name": "ProxyData",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 168,
+            "name": "_implementation",
+            "nodeType": "VariableDeclaration",
+            "scope": 169,
+            "src": "243:30:6",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 167,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "243:7:6",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 170,
+        "src": "217:66:6"
+      }
+    ],
+    "src": "0:283:6"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.23+commit.124ca40d.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.2",
+  "updatedAt": "2019-03-31T22:04:01.614Z",
+  "devdoc": {
+    "methods": {},
+    "title": "Ownable"
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

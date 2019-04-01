@@ -1,0 +1,67 @@
+{
+  "name": "sow-demo",
+  "version": "0.0.1",
+  "private": true,
+  "description": "A demo with web3 solidity and react",
+  "main": "server.js",
+  "proxy": "http://localhost:8080/",
+  "scripts": {
+    "client": "cd client/sow-demo && react-scripts start",
+    "api": "nodemon ./api/server.js",
+    "start": "concurrently --kill-others-on-fail \"npm run client\" \"npm run api\"",    
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PunchToken/SOW-Demo.git"
+  },
+  "keywords": [
+    "truffle",
+    "solidity",
+    "node",
+    "npx",
+    "web3",
+    "react",
+    "redux"
+  ],
+  "author": "Dennis O'Connell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PunchToken/SOW-Demo/issues"
+  },
+  "dependencies": {
+    "bcrypt": "^3.0.5",
+    "body-parser": "^1.18.3",
+    "chalk": "^2.4.2",
+    "dotenv": "^7.0.0",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.11",
+    "luxon": "^1.12.0",
+    "morgan": "^1.9.1",
+    "passport": "^0.4.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-scripts": "2.1.8",
+    "truffle-hdwallet-provider": "0.0.5",
+    "truffle-hdwallet-provider-privkey": "^0.3.0",
+    "web3": "^1.0.0-beta.34"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "homepage": "https://github.com/PunchToken/SOW-Demo#readme",
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "nodemon": "^1.18.10",
+    "openzeppelin-solidity": "^2.2.0"
+  }
+}

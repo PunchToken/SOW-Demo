@@ -35,7 +35,7 @@ contract("SOW Proxy contract tests", async (accounts) => {
     it("should create two new contracts from factory", async () => {
         const proposer = accounts[4];
         let resultC1 = await sowFactory.createSOW(accounts[0], { from: accounts[0] });
-        let resultC2 = await sowFactory.createSOW(accounts[2], { from: accounts[2] });
+        let resultC2 = await sowFactory.createSOW(accounts[0], { from: accounts[0] });
         let log = resultC1.logs[0];        
         let c1 = await SOWContractV1.at(log.args.created);
         let c2 = await SOWContractV1.at(resultC2.logs[0].args.created);
@@ -57,7 +57,7 @@ contract("SOW Proxy contract tests", async (accounts) => {
         ///const contract3 = await SOWContractV1.at(contract3Address);
     });
 
-    it.only('shuld create a new contract and set some stuff', async () => {    
+    it.only('should create a new contract and set some stuff', async () => {    
 
         const proposer = accounts[4];
         const acceptor = accounts[5];
@@ -76,7 +76,7 @@ contract("SOW Proxy contract tests", async (accounts) => {
         //console.log(success.logs[0]);
         console.log('here');
         //success = await sowProxy.setWorkerAddress(worker);
-        //console.log('here 2'); 
+        console.log('here 2'); 
         //success = await sowProxy.setWorkerAddress(worker);             
         success = await sowProxy.setAcceptorAddress(acceptor);
         //console.log(success.logs[0]);

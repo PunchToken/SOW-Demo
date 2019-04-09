@@ -8,7 +8,7 @@
   "scripts": {
     "client": "cd client/sow-demo && react-scripts start",
     "api": "nodemon ./api/server.js",
-    "start": "concurrently --kill-others-on-fail \"npm run client\" \"npm run api\"",    
+    "start": "concurrently --kill-others-on-fail \"npm run client\" \"npm run api\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -47,7 +47,9 @@
     "react-scripts": "2.1.8",
     "truffle-hdwallet-provider": "0.0.5",
     "truffle-hdwallet-provider-privkey": "^0.3.0",
-    "web3": "^1.0.0-beta.34"
+    "web3": "^1.0.0-beta.34",
+    "@material-ui/core": "^3.9.3",
+    "@material-ui/icons": "^3.0.2"
   },
   "eslintConfig": {
     "extends": "react-app"

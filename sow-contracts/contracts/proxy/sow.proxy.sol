@@ -5,14 +5,14 @@ import "../storage/sow.storage.state.sol";
 import "./sow.proxy.data.sol";
 import "./sow.proxy.header.sol";
 
-contract SOWProxy is  SOWStorageState , ProxyData, ProxyHeader, Ownable {
+contract SOWProxy is SOWStorageState , ProxyData, ProxyHeader, Ownable {
     
   constructor(SOWStorage __storage , address _owner) 
       public
       Ownable(_owner)  
    {
       _storage = __storage;     
-  }
+   }
   function implementation() public view returns (address) {
     return _implementation;
   }

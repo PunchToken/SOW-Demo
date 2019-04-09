@@ -20,7 +20,7 @@ completionDateOfServices: DataTypes.DATE,
 projectName,
 rate,
 weekStartDay
-
+sowName (project code)
 */
 
 contract SOWContractV1 is SOWHeader, SOWStorageState {
@@ -48,6 +48,11 @@ contract SOWContractV1 is SOWHeader, SOWStorageState {
         _;
     }
 
+    modifier notProposed() {
+         require(_storage.getAddress("proposer") == address(0));
+        _;
+    }
+
     function setName(string _contractName) 
         public
         notActive
@@ -63,6 +68,7 @@ contract SOWContractV1 is SOWHeader, SOWStorageState {
          public 
          notActive 
          notExpired
+         notProposed
          returns(bool) 
     {
         require(_proposerAddress != address(0), "Proposer Address is a zero address, not allowed.");
@@ -88,22 +94,19 @@ contract SOWContractV1 is SOWHeader, SOWStorageState {
     }
 
     function setWorkerAddress(address _workerAddress) 
-        public 
-        onlyActive 
-        notExpired 
-        onlyProposed  
+        public        
+        notExpired
         returns (bool) 
     {
         require(_workerAddress != address(0), "Worker Address is a zero address, not allowed.");
         //require(_workerAddress.isContract() == false, "Proposer Address is a contract address, not allowed");
-        _storage.setAddress("workerx", _workerAddress);
+        _storage.setAddress("worker", _workerAddress);
         emit SOWWorkerAdded(_workerAddress, getName());
         return true;
     }
 
     function setStartDate(uint256 _startDate) 
-        public
-        notActive 
+        public         
         notExpired 
         returns (bool)
     {
@@ -113,8 +116,7 @@ contract SOWContractV1 is SOWHeader, SOWStorageState {
     }
 
      function setEndDate(uint256 _endDate) 
-        public
-        notActive 
+        public         
         notExpired 
         returns (bool)
     {

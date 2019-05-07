@@ -13,4 +13,9 @@ contract OwnableData {
         require(msg.sender == owner, "Address is not owner");
         _;
     }    
+
+    modifier isOwner(address caller) {
+    require(caller == owner, "Address is not owner");
+        _;
+  }
 }

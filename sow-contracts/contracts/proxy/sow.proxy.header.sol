@@ -7,5 +7,5 @@ pragma solidity ^0.4.23;
  */
 
 contract ProxyHeader {   
-  event Upgraded(address indexed implementation);
+  event Upgraded(address indexed implementation);  
 }

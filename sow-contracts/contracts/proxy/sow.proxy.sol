@@ -13,12 +13,19 @@ contract SOWProxy is SOWStorageState , ProxyData, ProxyHeader, Ownable {
    {
       _storage = __storage;     
    }
+   
   function implementation() public view returns (address) {
     return _implementation;
   }
 
   function upgradeTo(address impl) public onlyOwner {
     require(_implementation != impl);
+    _implementation = impl;
+    emit Upgraded(impl);
+  }
+
+  function upgradeBy(address impl, address _caller) public isOwner(_caller) {
+     require(_implementation != impl);
     _implementation = impl;
     emit Upgraded(impl);
   }

@@ -34,16 +34,18 @@ contract("SOW Proxy contract tests", async (accounts) => {
     
     it("should create two new contracts from factory", async () => {
         const proposer = accounts[4];
-        let resultC1 = await sowFactory.createSOW(accounts[0], { from: accounts[0] });
-        let resultC2 = await sowFactory.createSOW(accounts[0], { from: accounts[0] });
-        let log = resultC1.logs[0];        
-        let c1 = await SOWContractV1.at(log.args.created);
-        let c2 = await SOWContractV1.at(resultC2.logs[0].args.created);
-        console.log(c1.address);
-        console.log(c2.address);
-        //let success = await c1.setProposerAddress(proposer, { from: accounts[2] });
-        // Get instance pointing to address obtained from event
-        ///const contract3 = await SOWContractV1.at(contract3Address);
+        let sowProxyAddressTxnRecpt = await sowFactory.createSOW(accounts[0], { from: accounts[1] });
+        let resultC2 = await sowFactory.createSOW(accounts[1], { from: accounts[1] });
+        let resultC3 = await sowFactory.createSOW(accounts[2], { from: accounts[1] });
+        let resultC4 = await sowFactory.createSOW(accounts[3], { from: accounts[1] });
+        console.log(sowProxyAddressTxnRecpt);
+        console.log(sowProxyAddressTxnRecpt.logs[0].args);
+         const sowProxyAddress = sowProxyAddressTxnRecpt.logs[0].args.proxyAddress;
+         const c1 = await SOWContractV1.at(sowProxyAddress);
+         let success = await c1.setProposerAddress(proposer, { from: accounts[2] });
+         console.log("success", success);
+        let result = await sowFactory.getContractCount();
+        console.log("result", result.toNumber());
     })
 
     it("should create two new contracts from test", async () => {
@@ -57,7 +59,7 @@ contract("SOW Proxy contract tests", async (accounts) => {
         ///const contract3 = await SOWContractV1.at(contract3Address);
     });
 
-    it.only('should create a new contract and set some stuff', async () => {    
+    it('should create a new contract and set some stuff', async () => {    
 
         const proposer = accounts[4];
         const acceptor = accounts[5];
@@ -81,5 +83,52 @@ contract("SOW Proxy contract tests", async (accounts) => {
         success = await sowProxy.setAcceptorAddress(acceptor);
         //console.log(success.logs[0]);
         console.log('here 3'); 
-    })
+    });
+
+    it('should migrate logic contract', async ()=> {
+        const owner = accounts[3];
+        let proxyAddress, storageAddress, logicAddress;
+        let sowProxyAddressTxnRecpt = await sowFactory.createSOW(owner);  
+        let result =  sowProxyAddressTxnRecpt.logs[0].args;
+        console.log(result);
+        proxyAddress = result.proxyAddress;
+        storageAddress = result.storageAddress;
+        logicAddress = result.logicAddress;  
+        //console.log('owner', owner, result._owner);  
+        
+        const currentLogic = await SOWContractV1.at(proxyAddress);
+        const currentProxy = await SOWProxy.at(proxyAddress);
+        //console.log("currnetProxy",currnetProxy);
+        let success = await currentLogic.setRate(150);
+        console.log(success);
+
+        const nextLogicAddr  = await SOWContractV1.new();
+        console.log(nextLogicAddr.address);
+        let migration = await currentProxy.upgradeBy(nextLogicAddr.address,owner);
+        console.log("migration", migration);
+        const nextLogic = await SOWContractV1.at(proxyAddress);
+        let rate = await nextLogic.getRate();
+        console.log("rate", rate.toNumber());               
+    });
+
+    it.skip('should work from a deployed factory contract', async () => {
+        //const deployedSOWFactoryAddr = "0x93fb819a1184348c4DABcb6C107FD7082cDdBf5d";
+        const deployedSOWFactory = await SOWFactory.at(deployedSOWFactoryAddr); 
+        const owner = accounts[3];
+        let proxyAddress, storageAddress, logicAddress;
+        let sowProxyAddressTxnRecpt = await sowFactory.createSOW(owner);  
+        let result =  sowProxyAddressTxnRecpt.logs[0].args;
+        console.log(result);
+    });
+
+    it.only('should work from a ropsten deployed factory contract', async () => {
+       
+        const deployedSOWFactoryAddr = "";
+        const deployedSOWFactory = await SOWFactory.at(deployedSOWFactoryAddr); 
+        const owner = accounts[3];
+        let proxyAddress, storageAddress, logicAddress;
+        let sowProxyAddressTxnRecpt = await sowFactory.createSOW(owner);  
+        let result =  sowProxyAddressTxnRecpt.logs[0].args;
+        console.log(result);
+    });
 });

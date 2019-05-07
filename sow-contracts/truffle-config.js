@@ -1,3 +1,9 @@
+//var HDWalletProvider = require("truffle-hdwallet-provider");
+const HDWalletProvider = require('truffle-hdwallet-provider-privkey');
+const ropstenPK =['DE3E7AF078B099E8B3F2EAB662F98A8C5F9F497FDA70CA858BB00BD88A812F0E'];
+const ropstenPK2 =['ad30b839d8038b10da98610ac74e0863571584231690595fdbc57120494c169f'];
+const ropstenProviderPk = 
+
 /**
  * Use this file to configure your truffle project. It's seeded with some
  * common settings for different networks and features like migrations,
@@ -46,6 +52,13 @@ module.exports = {
        host: "127.0.0.1",     // Localhost (default: none)
        port: 8545,            // Standard Ethereum port (default: none)
       network_id: "*",       // Any network (default: none)
+    },
+    ropsten: {
+      provider: () => new HDWalletProvider(ropstenPK2,'https://ropsten.infura.io/v3/a953d3b52a37482abafd0a1789d6e1f9'),
+      gas: 5500000,   
+      confirmations: 2, 
+      timeoutBlocks: 200,   
+      network_id: 3     
     },
 
     // Another network with more advanced options...

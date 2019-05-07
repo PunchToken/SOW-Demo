@@ -27,7 +27,7 @@ contract SOWContractV1 is SOWHeader, SOWStorageState {
     // Import safeMath for operations.
     using SafeMath for uint256;
     using AddressUtils for address; 
-
+    
     modifier onlyActive() {
         require(_storage.getBool("isActive") == true);
         _;
@@ -50,6 +50,16 @@ contract SOWContractV1 is SOWHeader, SOWStorageState {
 
     modifier notProposed() {
          require(_storage.getAddress("proposer") == address(0));
+        _;
+    }
+
+    modifier onlyProposer(address proposer) {
+         require(_storage.getAddress("proposer") == proposer);
+        _;
+    }
+
+     modifier eitherParticipant(address participant) {
+         require(_storage.getAddress("proposer") == participant || _storage.getAddress("acceptor") == participant);
         _;
     }
 
@@ -78,18 +88,17 @@ contract SOWContractV1 is SOWHeader, SOWStorageState {
         return true;
     }
 
+    // the proposer must also accept the proposer
     function setAcceptorAddress(address _acceptorAddress) 
         public 
         notActive 
         notExpired
-        onlyProposed        
+        onlyProposed 
         returns (bool) 
     {
         require(_acceptorAddress != address(0), "Proposer Address is a zero address, not allowed.");
         //require(_acceptorAddress.isContract() == false, "Proposer Address is a contract address, not allowed");
         _storage.setAddress("acceptor", _acceptorAddress);
-        emit SOWAccepted(_acceptorAddress,  getName());
-        setActive();
         return true;
     }
 
@@ -135,10 +144,11 @@ contract SOWContractV1 is SOWHeader, SOWStorageState {
         return true;
     }
 
-    function setActive() 
+    function setActive(address proposer) 
         private
         notActive 
         notExpired
+        onlyProposer(proposer)
         returns (bool)
     {
         // require
@@ -160,6 +170,22 @@ contract SOWContractV1 is SOWHeader, SOWStorageState {
          _storage.setBool("isExpired", true);
          emit SOWIsExpired(getName());
          return true;
+    }
+
+    function getRate()
+        public
+        view
+        returns(uint256 rate)
+    {
+        return _storage.getUint("rate");
+    }
+
+    function getWorker()
+        public
+        view
+        returns(address worker)
+    {
+        return _storage.getAddress("worker");
     }
 
     function getName()

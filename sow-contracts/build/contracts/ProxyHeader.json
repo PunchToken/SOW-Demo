@@ -14,24 +14,24 @@
       "type": "event"
     }
   ],
-  "bytecode": "0x6080604052348015600f57600080fd5b50603580601d6000396000f3006080604052600080fd00a165627a7a72305820940c9d568d4ee442b4f009a472d8d4b24e968282d5972962d0fd04a9b8b9f26d0029",
-  "deployedBytecode": "0x6080604052600080fd00a165627a7a72305820940c9d568d4ee442b4f009a472d8d4b24e968282d5972962d0fd04a9b8b9f26d0029",
-  "sourceMap": "217:77:7:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;217:77:7;;;;;;;",
-  "deployedSourceMap": "217:77:7:-;;;;;",
-  "source": "pragma solidity ^0.4.23;\n\n/**\n * @title Ownable\n * @dev The Ownable contract has an owner address, and provides basic authorization control\n * functions, this simplifies the implementation of \"user permissions\".\n */\n\ncontract ProxyHeader {   \n  event Upgraded(address indexed implementation);\n}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603580601d6000396000f3006080604052600080fd00a165627a7a7230582088dbd55aa2f8a4e7ca3eaba5b01c01b3469b40e8d154385643af288891e9c8db0029",
+  "deployedBytecode": "0x6080604052600080fd00a165627a7a7230582088dbd55aa2f8a4e7ca3eaba5b01c01b3469b40e8d154385643af288891e9c8db0029",
+  "sourceMap": "217:79:10:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;217:79:10;;;;;;;",
+  "deployedSourceMap": "217:79:10:-;;;;;",
+  "source": "pragma solidity ^0.4.23;\n\n/**\n * @title Ownable\n * @dev The Ownable contract has an owner address, and provides basic authorization control\n * functions, this simplifies the implementation of \"user permissions\".\n */\n\ncontract ProxyHeader {   \n  event Upgraded(address indexed implementation);  \n}",
   "sourcePath": "/Users/dennismacpro/Ascension/SOW-Demo/sow-contracts/contracts/proxy/sow.proxy.header.sol",
   "ast": {
     "absolutePath": "/Users/dennismacpro/Ascension/SOW-Demo/sow-contracts/contracts/proxy/sow.proxy.header.sol",
     "exportedSymbols": {
       "ProxyHeader": [
-        176
+        784
       ]
     },
-    "id": 177,
+    "id": 785,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 171,
+        "id": 779,
         "literals": [
           "solidity",
           "^",
@@ -39,7 +39,7 @@
           ".23"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:7"
+        "src": "0:24:10"
       },
       {
         "baseContracts": [],
@@ -47,9 +47,9 @@
         "contractKind": "contract",
         "documentation": "@title Ownable\n@dev The Ownable contract has an owner address, and provides basic authorization control\nfunctions, this simplifies the implementation of \"user permissions\".",
         "fullyImplemented": true,
-        "id": 176,
+        "id": 784,
         "linearizedBaseContracts": [
-          176
+          784
         ],
         "name": "ProxyHeader",
         "nodeType": "ContractDefinition",
@@ -57,21 +57,21 @@
           {
             "anonymous": false,
             "documentation": null,
-            "id": 175,
+            "id": 783,
             "name": "Upgraded",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 174,
+              "id": 782,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 173,
+                  "id": 781,
                   "indexed": true,
                   "name": "implementation",
                   "nodeType": "VariableDeclaration",
-                  "scope": 175,
-                  "src": "260:30:7",
+                  "scope": 783,
+                  "src": "260:30:10",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -79,10 +79,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 172,
+                    "id": 780,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "260:7:7",
+                    "src": "260:7:10",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -92,29 +92,29 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "259:32:7"
+              "src": "259:32:10"
             },
-            "src": "245:47:7"
+            "src": "245:47:10"
           }
         ],
-        "scope": 177,
-        "src": "217:77:7"
+        "scope": 785,
+        "src": "217:79:10"
       }
     ],
-    "src": "0:294:7"
+    "src": "0:296:10"
   },
   "legacyAST": {
     "absolutePath": "/Users/dennismacpro/Ascension/SOW-Demo/sow-contracts/contracts/proxy/sow.proxy.header.sol",
     "exportedSymbols": {
       "ProxyHeader": [
-        176
+        784
       ]
     },
-    "id": 177,
+    "id": 785,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 171,
+        "id": 779,
         "literals": [
           "solidity",
           "^",
@@ -122,7 +122,7 @@
           ".23"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:7"
+        "src": "0:24:10"
       },
       {
         "baseContracts": [],
@@ -130,9 +130,9 @@
         "contractKind": "contract",
         "documentation": "@title Ownable\n@dev The Ownable contract has an owner address, and provides basic authorization control\nfunctions, this simplifies the implementation of \"user permissions\".",
         "fullyImplemented": true,
-        "id": 176,
+        "id": 784,
         "linearizedBaseContracts": [
-          176
+          784
         ],
         "name": "ProxyHeader",
         "nodeType": "ContractDefinition",
@@ -140,21 +140,21 @@
           {
             "anonymous": false,
             "documentation": null,
-            "id": 175,
+            "id": 783,
             "name": "Upgraded",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 174,
+              "id": 782,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 173,
+                  "id": 781,
                   "indexed": true,
                   "name": "implementation",
                   "nodeType": "VariableDeclaration",
-                  "scope": 175,
-                  "src": "260:30:7",
+                  "scope": 783,
+                  "src": "260:30:10",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -162,10 +162,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 172,
+                    "id": 780,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "260:7:7",
+                    "src": "260:7:10",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -175,16 +175,16 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "259:32:7"
+              "src": "259:32:10"
             },
-            "src": "245:47:7"
+            "src": "245:47:10"
           }
         ],
-        "scope": 177,
-        "src": "217:77:7"
+        "scope": 785,
+        "src": "217:79:10"
       }
     ],
-    "src": "0:294:7"
+    "src": "0:296:10"
   },
   "compiler": {
     "name": "solc",
@@ -192,7 +192,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.2",
-  "updatedAt": "2019-03-31T22:04:01.614Z",
+  "updatedAt": "2019-05-06T23:42:09.776Z",
   "devdoc": {
     "methods": {},
     "title": "Ownable"

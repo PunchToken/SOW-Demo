@@ -6,21 +6,27 @@ import "../proxy/sow.proxy.sol";
 import "./sow.factory.data.sol";
 import "../storage/sow.storage.sol";
 import "./sow.factory.header.sol";
+import "../ownable/ownable.sol";
 
-contract SOWFactory is SOWFactoryData, SOWFactoryHeader {
-   
+
+contract SOWFactory is SOWFactoryData, SOWFactoryHeader {  
+
+
     function createSOW(address _owner)
         public
         returns (address)
     {       
-        SOWStorage sowStorage = new SOWStorage();       
-        SOWProxy sowProxy = new SOWProxy(sowStorage, msg.sender);
-        //TimeSheetV1 timeSheet = new TimeSheetV1();   
-        SOWContractV1 instance = new SOWContractV1();  
-        emit ContractCreated(sowProxy, _owner, msg.sender);  
-        sowProxy.upgradeTo(instance);       
-        _sowContracts.push(sowProxy);
-        return sowProxy; 
+        // todo require _owner to not be null
+        address sowStorageAddr = new SOWStorage();
+        SOWStorage sowStorage = SOWStorage(sowStorageAddr);
+        
+        address sowProxyAddr = new SOWProxy(sowStorage, _owner); 
+        SOWProxy sowProxyInstance = SOWProxy(sowProxyAddr);
+        
+        address sowLogicAddr = new SOWContractV1();    
+        sowProxyInstance.upgradeBy(sowLogicAddr, _owner);              
+        emit SOWSuccessfullyCreated(sowStorageAddr,sowLogicAddr,sowProxyAddr, _owner, msg.sender);
+        return sowProxyAddr; 
     }
 
     function getContractCount() 
@@ -29,5 +35,6 @@ contract SOWFactory is SOWFactoryData, SOWFactoryHeader {
     returns(uint contractCount)
   {
     return _sowContracts.length;
-  }
+  } 
+  
 }

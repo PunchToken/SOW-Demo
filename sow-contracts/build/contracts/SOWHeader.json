@@ -6,6 +6,18 @@
       "inputs": [
         {
           "indexed": true,
+          "name": "contractName",
+          "type": "string"
+        }
+      ],
+      "name": "SOWNameSet",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
           "name": "proposer",
           "type": "address"
         },
@@ -128,24 +140,24 @@
       "type": "event"
     }
   ],
-  "bytecode": "0x6080604052348015600f57600080fd5b50603580601d6000396000f3006080604052600080fd00a165627a7a72305820830cc121b73c88f9b016408badfcad7190405887c3a5f5bc03e9492485f0bdf90029",
-  "deployedBytecode": "0x6080604052600080fd00a165627a7a72305820830cc121b73c88f9b016408badfcad7190405887c3a5f5bc03e9492485f0bdf90029",
-  "sourceMap": "26:609:2:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;26:609:2;;;;;;;",
-  "deployedSourceMap": "26:609:2:-;;;;;",
-  "source": "pragma solidity ^0.4.23;\n\ncontract SOWHeader {\n    event SOWProposed(address indexed proposer, string indexed contractName);\n    event SOWWorkerAdded(address indexed worker, string indexed contractName);\n    event SOWAccepted(address indexed acceptor, string indexed contractName);\n    event SOWIsActive(string indexed contractName);\n    event SOWIsExpired(string indexed contractName);\n    event SOWStartDateSet(uint256 indexed startDate, string indexed contractName);\n    event SOWEndDateSet(uint256 indexed startDate, string indexed contractName);\n    event SOWRateSet(uint256 indexed startDate, string indexed contractName);\n    \n}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603580601d6000396000f3006080604052600080fd00a165627a7a7230582088c14c5e5a36eaedf1de74fd7aa8bf92c4084e90650b2e7ecb52bfb5684cb30c0029",
+  "deployedBytecode": "0x6080604052600080fd00a165627a7a7230582088c14c5e5a36eaedf1de74fd7aa8bf92c4084e90650b2e7ecb52bfb5684cb30c0029",
+  "sourceMap": "26:754:4:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;26:754:4;;;;;;;",
+  "deployedSourceMap": "26:754:4:-;;;;;",
+  "source": "pragma solidity ^0.4.23;\n\ncontract SOWHeader {\n    event SOWNameSet(string indexed contractName);\n    event SOWProposed(address indexed proposer, string indexed contractName);\n    event SOWWorkerAdded(address indexed worker, string indexed contractName);\n    event SOWAccepted(address indexed acceptor, string indexed contractName);\n    event SOWIsActive(string indexed contractName);\n    event SOWIsExpired(string indexed contractName);\n    event SOWStartDateSet(uint256 indexed startDate, string indexed contractName);\n    event SOWEndDateSet(uint256 indexed startDate, string indexed contractName);\n    event SOWRateSet(uint256 indexed startDate, string indexed contractName);\n    enum States {\n        Proposed,\n        Accepted,\n        Active,\n        Expired       \n    }\n}",
   "sourcePath": "/Users/dennismacpro/Ascension/SOW-Demo/sow-contracts/contracts/logic/sow.header.sol",
   "ast": {
     "absolutePath": "/Users/dennismacpro/Ascension/SOW-Demo/sow-contracts/contracts/logic/sow.header.sol",
     "exportedSymbols": {
       "SOWHeader": [
-        123
+        244
       ]
     },
-    "id": 124,
+    "id": 245,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 78,
+        "id": 190,
         "literals": [
           "solidity",
           "^",
@@ -153,7 +165,7 @@
           ".23"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:2"
+        "src": "0:24:4"
       },
       {
         "baseContracts": [],
@@ -161,9 +173,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 123,
+        "id": 244,
         "linearizedBaseContracts": [
-          123
+          244
         ],
         "name": "SOWHeader",
         "nodeType": "ContractDefinition",
@@ -171,21 +183,63 @@
           {
             "anonymous": false,
             "documentation": null,
-            "id": 84,
+            "id": 194,
+            "name": "SOWNameSet",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 193,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 192,
+                  "indexed": true,
+                  "name": "contractName",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 194,
+                  "src": "68:27:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 191,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "68:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "67:29:4"
+            },
+            "src": "51:46:4"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 200,
             "name": "SOWProposed",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 83,
+              "id": 199,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 80,
+                  "id": 196,
                   "indexed": true,
                   "name": "proposer",
                   "nodeType": "VariableDeclaration",
-                  "scope": 84,
-                  "src": "69:24:2",
+                  "scope": 200,
+                  "src": "120:24:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -193,10 +247,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 79,
+                    "id": 195,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "69:7:2",
+                    "src": "120:7:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -207,12 +261,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 82,
+                  "id": 198,
                   "indexed": true,
                   "name": "contractName",
                   "nodeType": "VariableDeclaration",
-                  "scope": 84,
-                  "src": "95:27:2",
+                  "scope": 200,
+                  "src": "146:27:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -220,10 +274,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 81,
+                    "id": 197,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "95:6:2",
+                    "src": "146:6:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -233,28 +287,28 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "68:55:2"
+              "src": "119:55:4"
             },
-            "src": "51:73:2"
+            "src": "102:73:4"
           },
           {
             "anonymous": false,
             "documentation": null,
-            "id": 90,
+            "id": 206,
             "name": "SOWWorkerAdded",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 89,
+              "id": 205,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 86,
+                  "id": 202,
                   "indexed": true,
                   "name": "worker",
                   "nodeType": "VariableDeclaration",
-                  "scope": 90,
-                  "src": "150:22:2",
+                  "scope": 206,
+                  "src": "201:22:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -262,10 +316,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 85,
+                    "id": 201,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "150:7:2",
+                    "src": "201:7:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -276,12 +330,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 88,
+                  "id": 204,
                   "indexed": true,
                   "name": "contractName",
                   "nodeType": "VariableDeclaration",
-                  "scope": 90,
-                  "src": "174:27:2",
+                  "scope": 206,
+                  "src": "225:27:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -289,10 +343,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 87,
+                    "id": 203,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "174:6:2",
+                    "src": "225:6:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -302,28 +356,28 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "149:53:2"
+              "src": "200:53:4"
             },
-            "src": "129:74:2"
+            "src": "180:74:4"
           },
           {
             "anonymous": false,
             "documentation": null,
-            "id": 96,
+            "id": 212,
             "name": "SOWAccepted",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 95,
+              "id": 211,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 92,
+                  "id": 208,
                   "indexed": true,
                   "name": "acceptor",
                   "nodeType": "VariableDeclaration",
-                  "scope": 96,
-                  "src": "226:24:2",
+                  "scope": 212,
+                  "src": "277:24:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -331,10 +385,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 91,
+                    "id": 207,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "226:7:2",
+                    "src": "277:7:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -345,12 +399,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 94,
+                  "id": 210,
                   "indexed": true,
                   "name": "contractName",
                   "nodeType": "VariableDeclaration",
-                  "scope": 96,
-                  "src": "252:27:2",
+                  "scope": 212,
+                  "src": "303:27:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -358,10 +412,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 93,
+                    "id": 209,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "252:6:2",
+                    "src": "303:6:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -371,28 +425,28 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "225:55:2"
+              "src": "276:55:4"
             },
-            "src": "208:73:2"
+            "src": "259:73:4"
           },
           {
             "anonymous": false,
             "documentation": null,
-            "id": 100,
+            "id": 216,
             "name": "SOWIsActive",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 99,
+              "id": 215,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 98,
+                  "id": 214,
                   "indexed": true,
                   "name": "contractName",
                   "nodeType": "VariableDeclaration",
-                  "scope": 100,
-                  "src": "304:27:2",
+                  "scope": 216,
+                  "src": "355:27:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -400,10 +454,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 97,
+                    "id": 213,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "304:6:2",
+                    "src": "355:6:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -413,28 +467,28 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "303:29:2"
+              "src": "354:29:4"
             },
-            "src": "286:47:2"
+            "src": "337:47:4"
           },
           {
             "anonymous": false,
             "documentation": null,
-            "id": 104,
+            "id": 220,
             "name": "SOWIsExpired",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 103,
+              "id": 219,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 102,
+                  "id": 218,
                   "indexed": true,
                   "name": "contractName",
                   "nodeType": "VariableDeclaration",
-                  "scope": 104,
-                  "src": "357:27:2",
+                  "scope": 220,
+                  "src": "408:27:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -442,10 +496,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 101,
+                    "id": 217,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "357:6:2",
+                    "src": "408:6:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -455,28 +509,28 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "356:29:2"
+              "src": "407:29:4"
             },
-            "src": "338:48:2"
+            "src": "389:48:4"
           },
           {
             "anonymous": false,
             "documentation": null,
-            "id": 110,
+            "id": 226,
             "name": "SOWStartDateSet",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 109,
+              "id": 225,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 106,
+                  "id": 222,
                   "indexed": true,
                   "name": "startDate",
                   "nodeType": "VariableDeclaration",
-                  "scope": 110,
-                  "src": "413:25:2",
+                  "scope": 226,
+                  "src": "464:25:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -484,10 +538,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 105,
+                    "id": 221,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "413:7:2",
+                    "src": "464:7:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -498,12 +552,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 108,
+                  "id": 224,
                   "indexed": true,
                   "name": "contractName",
                   "nodeType": "VariableDeclaration",
-                  "scope": 110,
-                  "src": "440:27:2",
+                  "scope": 226,
+                  "src": "491:27:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -511,10 +565,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 107,
+                    "id": 223,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "440:6:2",
+                    "src": "491:6:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -524,28 +578,28 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "412:56:2"
+              "src": "463:56:4"
             },
-            "src": "391:78:2"
+            "src": "442:78:4"
           },
           {
             "anonymous": false,
             "documentation": null,
-            "id": 116,
+            "id": 232,
             "name": "SOWEndDateSet",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 115,
+              "id": 231,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 112,
+                  "id": 228,
                   "indexed": true,
                   "name": "startDate",
                   "nodeType": "VariableDeclaration",
-                  "scope": 116,
-                  "src": "494:25:2",
+                  "scope": 232,
+                  "src": "545:25:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -553,10 +607,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 111,
+                    "id": 227,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "494:7:2",
+                    "src": "545:7:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -567,12 +621,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 114,
+                  "id": 230,
                   "indexed": true,
                   "name": "contractName",
                   "nodeType": "VariableDeclaration",
-                  "scope": 116,
-                  "src": "521:27:2",
+                  "scope": 232,
+                  "src": "572:27:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -580,10 +634,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 113,
+                    "id": 229,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "521:6:2",
+                    "src": "572:6:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -593,28 +647,28 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "493:56:2"
+              "src": "544:56:4"
             },
-            "src": "474:76:2"
+            "src": "525:76:4"
           },
           {
             "anonymous": false,
             "documentation": null,
-            "id": 122,
+            "id": 238,
             "name": "SOWRateSet",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 121,
+              "id": 237,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 118,
+                  "id": 234,
                   "indexed": true,
                   "name": "startDate",
                   "nodeType": "VariableDeclaration",
-                  "scope": 122,
-                  "src": "572:25:2",
+                  "scope": 238,
+                  "src": "623:25:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -622,10 +676,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 117,
+                    "id": 233,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "572:7:2",
+                    "src": "623:7:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -636,12 +690,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 120,
+                  "id": 236,
                   "indexed": true,
                   "name": "contractName",
                   "nodeType": "VariableDeclaration",
-                  "scope": 122,
-                  "src": "599:27:2",
+                  "scope": 238,
+                  "src": "650:27:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -649,10 +703,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 119,
+                    "id": 235,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "599:6:2",
+                    "src": "650:6:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -662,29 +716,62 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "571:56:2"
+              "src": "622:56:4"
             },
-            "src": "555:73:2"
+            "src": "606:73:4"
+          },
+          {
+            "canonicalName": "SOWHeader.States",
+            "id": 243,
+            "members": [
+              {
+                "id": 239,
+                "name": "Proposed",
+                "nodeType": "EnumValue",
+                "src": "706:8:4"
+              },
+              {
+                "id": 240,
+                "name": "Accepted",
+                "nodeType": "EnumValue",
+                "src": "724:8:4"
+              },
+              {
+                "id": 241,
+                "name": "Active",
+                "nodeType": "EnumValue",
+                "src": "742:6:4"
+              },
+              {
+                "id": 242,
+                "name": "Expired",
+                "nodeType": "EnumValue",
+                "src": "758:7:4"
+              }
+            ],
+            "name": "States",
+            "nodeType": "EnumDefinition",
+            "src": "684:94:4"
           }
         ],
-        "scope": 124,
-        "src": "26:609:2"
+        "scope": 245,
+        "src": "26:754:4"
       }
     ],
-    "src": "0:635:2"
+    "src": "0:780:4"
   },
   "legacyAST": {
     "absolutePath": "/Users/dennismacpro/Ascension/SOW-Demo/sow-contracts/contracts/logic/sow.header.sol",
     "exportedSymbols": {
       "SOWHeader": [
-        123
+        244
       ]
     },
-    "id": 124,
+    "id": 245,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 78,
+        "id": 190,
         "literals": [
           "solidity",
           "^",
@@ -692,7 +779,7 @@
           ".23"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:2"
+        "src": "0:24:4"
       },
       {
         "baseContracts": [],
@@ -700,9 +787,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 123,
+        "id": 244,
         "linearizedBaseContracts": [
-          123
+          244
         ],
         "name": "SOWHeader",
         "nodeType": "ContractDefinition",
@@ -710,21 +797,63 @@
           {
             "anonymous": false,
             "documentation": null,
-            "id": 84,
+            "id": 194,
+            "name": "SOWNameSet",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 193,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 192,
+                  "indexed": true,
+                  "name": "contractName",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 194,
+                  "src": "68:27:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 191,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "68:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "67:29:4"
+            },
+            "src": "51:46:4"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 200,
             "name": "SOWProposed",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 83,
+              "id": 199,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 80,
+                  "id": 196,
                   "indexed": true,
                   "name": "proposer",
                   "nodeType": "VariableDeclaration",
-                  "scope": 84,
-                  "src": "69:24:2",
+                  "scope": 200,
+                  "src": "120:24:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -732,10 +861,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 79,
+                    "id": 195,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "69:7:2",
+                    "src": "120:7:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -746,12 +875,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 82,
+                  "id": 198,
                   "indexed": true,
                   "name": "contractName",
                   "nodeType": "VariableDeclaration",
-                  "scope": 84,
-                  "src": "95:27:2",
+                  "scope": 200,
+                  "src": "146:27:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -759,10 +888,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 81,
+                    "id": 197,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "95:6:2",
+                    "src": "146:6:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -772,28 +901,28 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "68:55:2"
+              "src": "119:55:4"
             },
-            "src": "51:73:2"
+            "src": "102:73:4"
           },
           {
             "anonymous": false,
             "documentation": null,
-            "id": 90,
+            "id": 206,
             "name": "SOWWorkerAdded",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 89,
+              "id": 205,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 86,
+                  "id": 202,
                   "indexed": true,
                   "name": "worker",
                   "nodeType": "VariableDeclaration",
-                  "scope": 90,
-                  "src": "150:22:2",
+                  "scope": 206,
+                  "src": "201:22:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -801,10 +930,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 85,
+                    "id": 201,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "150:7:2",
+                    "src": "201:7:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -815,12 +944,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 88,
+                  "id": 204,
                   "indexed": true,
                   "name": "contractName",
                   "nodeType": "VariableDeclaration",
-                  "scope": 90,
-                  "src": "174:27:2",
+                  "scope": 206,
+                  "src": "225:27:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -828,10 +957,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 87,
+                    "id": 203,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "174:6:2",
+                    "src": "225:6:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -841,28 +970,28 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "149:53:2"
+              "src": "200:53:4"
             },
-            "src": "129:74:2"
+            "src": "180:74:4"
           },
           {
             "anonymous": false,
             "documentation": null,
-            "id": 96,
+            "id": 212,
             "name": "SOWAccepted",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 95,
+              "id": 211,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 92,
+                  "id": 208,
                   "indexed": true,
                   "name": "acceptor",
                   "nodeType": "VariableDeclaration",
-                  "scope": 96,
-                  "src": "226:24:2",
+                  "scope": 212,
+                  "src": "277:24:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -870,10 +999,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 91,
+                    "id": 207,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "226:7:2",
+                    "src": "277:7:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -884,12 +1013,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 94,
+                  "id": 210,
                   "indexed": true,
                   "name": "contractName",
                   "nodeType": "VariableDeclaration",
-                  "scope": 96,
-                  "src": "252:27:2",
+                  "scope": 212,
+                  "src": "303:27:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -897,10 +1026,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 93,
+                    "id": 209,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "252:6:2",
+                    "src": "303:6:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -910,28 +1039,28 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "225:55:2"
+              "src": "276:55:4"
             },
-            "src": "208:73:2"
+            "src": "259:73:4"
           },
           {
             "anonymous": false,
             "documentation": null,
-            "id": 100,
+            "id": 216,
             "name": "SOWIsActive",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 99,
+              "id": 215,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 98,
+                  "id": 214,
                   "indexed": true,
                   "name": "contractName",
                   "nodeType": "VariableDeclaration",
-                  "scope": 100,
-                  "src": "304:27:2",
+                  "scope": 216,
+                  "src": "355:27:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -939,10 +1068,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 97,
+                    "id": 213,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "304:6:2",
+                    "src": "355:6:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -952,28 +1081,28 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "303:29:2"
+              "src": "354:29:4"
             },
-            "src": "286:47:2"
+            "src": "337:47:4"
           },
           {
             "anonymous": false,
             "documentation": null,
-            "id": 104,
+            "id": 220,
             "name": "SOWIsExpired",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 103,
+              "id": 219,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 102,
+                  "id": 218,
                   "indexed": true,
                   "name": "contractName",
                   "nodeType": "VariableDeclaration",
-                  "scope": 104,
-                  "src": "357:27:2",
+                  "scope": 220,
+                  "src": "408:27:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -981,10 +1110,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 101,
+                    "id": 217,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "357:6:2",
+                    "src": "408:6:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -994,28 +1123,28 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "356:29:2"
+              "src": "407:29:4"
             },
-            "src": "338:48:2"
+            "src": "389:48:4"
           },
           {
             "anonymous": false,
             "documentation": null,
-            "id": 110,
+            "id": 226,
             "name": "SOWStartDateSet",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 109,
+              "id": 225,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 106,
+                  "id": 222,
                   "indexed": true,
                   "name": "startDate",
                   "nodeType": "VariableDeclaration",
-                  "scope": 110,
-                  "src": "413:25:2",
+                  "scope": 226,
+                  "src": "464:25:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1023,10 +1152,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 105,
+                    "id": 221,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "413:7:2",
+                    "src": "464:7:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1037,12 +1166,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 108,
+                  "id": 224,
                   "indexed": true,
                   "name": "contractName",
                   "nodeType": "VariableDeclaration",
-                  "scope": 110,
-                  "src": "440:27:2",
+                  "scope": 226,
+                  "src": "491:27:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1050,10 +1179,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 107,
+                    "id": 223,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "440:6:2",
+                    "src": "491:6:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -1063,28 +1192,28 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "412:56:2"
+              "src": "463:56:4"
             },
-            "src": "391:78:2"
+            "src": "442:78:4"
           },
           {
             "anonymous": false,
             "documentation": null,
-            "id": 116,
+            "id": 232,
             "name": "SOWEndDateSet",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 115,
+              "id": 231,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 112,
+                  "id": 228,
                   "indexed": true,
                   "name": "startDate",
                   "nodeType": "VariableDeclaration",
-                  "scope": 116,
-                  "src": "494:25:2",
+                  "scope": 232,
+                  "src": "545:25:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1092,10 +1221,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 111,
+                    "id": 227,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "494:7:2",
+                    "src": "545:7:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1106,12 +1235,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 114,
+                  "id": 230,
                   "indexed": true,
                   "name": "contractName",
                   "nodeType": "VariableDeclaration",
-                  "scope": 116,
-                  "src": "521:27:2",
+                  "scope": 232,
+                  "src": "572:27:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1119,10 +1248,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 113,
+                    "id": 229,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "521:6:2",
+                    "src": "572:6:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -1132,28 +1261,28 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "493:56:2"
+              "src": "544:56:4"
             },
-            "src": "474:76:2"
+            "src": "525:76:4"
           },
           {
             "anonymous": false,
             "documentation": null,
-            "id": 122,
+            "id": 238,
             "name": "SOWRateSet",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 121,
+              "id": 237,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 118,
+                  "id": 234,
                   "indexed": true,
                   "name": "startDate",
                   "nodeType": "VariableDeclaration",
-                  "scope": 122,
-                  "src": "572:25:2",
+                  "scope": 238,
+                  "src": "623:25:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1161,10 +1290,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 117,
+                    "id": 233,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "572:7:2",
+                    "src": "623:7:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1175,12 +1304,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 120,
+                  "id": 236,
                   "indexed": true,
                   "name": "contractName",
                   "nodeType": "VariableDeclaration",
-                  "scope": 122,
-                  "src": "599:27:2",
+                  "scope": 238,
+                  "src": "650:27:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1188,10 +1317,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 119,
+                    "id": 235,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "599:6:2",
+                    "src": "650:6:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -1201,16 +1330,49 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "571:56:2"
+              "src": "622:56:4"
             },
-            "src": "555:73:2"
+            "src": "606:73:4"
+          },
+          {
+            "canonicalName": "SOWHeader.States",
+            "id": 243,
+            "members": [
+              {
+                "id": 239,
+                "name": "Proposed",
+                "nodeType": "EnumValue",
+                "src": "706:8:4"
+              },
+              {
+                "id": 240,
+                "name": "Accepted",
+                "nodeType": "EnumValue",
+                "src": "724:8:4"
+              },
+              {
+                "id": 241,
+                "name": "Active",
+                "nodeType": "EnumValue",
+                "src": "742:6:4"
+              },
+              {
+                "id": 242,
+                "name": "Expired",
+                "nodeType": "EnumValue",
+                "src": "758:7:4"
+              }
+            ],
+            "name": "States",
+            "nodeType": "EnumDefinition",
+            "src": "684:94:4"
           }
         ],
-        "scope": 124,
-        "src": "26:609:2"
+        "scope": 245,
+        "src": "26:754:4"
       }
     ],
-    "src": "0:635:2"
+    "src": "0:780:4"
   },
   "compiler": {
     "name": "solc",
@@ -1218,7 +1380,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.2",
-  "updatedAt": "2019-03-31T23:10:19.409Z",
+  "updatedAt": "2019-05-06T23:42:09.777Z",
   "devdoc": {
     "methods": {}
   },

@@ -21,20 +21,20 @@
       "type": "function"
     }
   ],
-  "bytecode": "0x608060405234801561001057600080fd5b50610117806100206000396000f300608060405260043610603f576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680633446f5e2146044575b600080fd5b348015604f57600080fd5b50606c6004803603810190808035906020019092919050505060ae565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60008181548110151560bc57fe5b906000526020600020016000915054906101000a900473ffffffffffffffffffffffffffffffffffffffff16815600a165627a7a72305820f47b3422c78dac16c2fbde6b02f241e109920619c70566e92168a4ebc5935daf0029",
-  "deployedBytecode": "0x608060405260043610603f576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680633446f5e2146044575b600080fd5b348015604f57600080fd5b50606c6004803603810190808035906020019092919050505060ae565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60008181548110151560bc57fe5b906000526020600020016000915054906101000a900473ffffffffffffffffffffffffffffffffffffffff16815600a165627a7a72305820f47b3422c78dac16c2fbde6b02f241e109920619c70566e92168a4ebc5935daf0029",
-  "sourceMap": "27:64:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;27:64:1;;;;;;;",
-  "deployedSourceMap": "27:64:1:-;;;;;;;;;;;;;;;;;;;;;;;;58:30;;8:9:-1;5:2;;;30:1;27;20:12;5:2;58:30:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
-  "source": "pragma solidity ^0.4.23;\n\n\ncontract SOWFactoryData {\n     address[] public _sowContracts;\n}",
+  "bytecode": "0x608060405234801561001057600080fd5b50610117806100206000396000f300608060405260043610603f576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680633446f5e2146044575b600080fd5b348015604f57600080fd5b50606c6004803603810190808035906020019092919050505060ae565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60018181548110151560bc57fe5b906000526020600020016000915054906101000a900473ffffffffffffffffffffffffffffffffffffffff16815600a165627a7a72305820888e4068b46e3491bcd8909bf0a9d03cfedc5595eb18022c11e22d7d7d506cc30029",
+  "deployedBytecode": "0x608060405260043610603f576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680633446f5e2146044575b600080fd5b348015604f57600080fd5b50606c6004803603810190808035906020019092919050505060ae565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60018181548110151560bc57fe5b906000526020600020016000915054906101000a900473ffffffffffffffffffffffffffffffffffffffff16815600a165627a7a72305820888e4068b46e3491bcd8909bf0a9d03cfedc5595eb18022c11e22d7d7d506cc30029",
+  "sourceMap": "27:112:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;27:112:1;;;;;;;",
+  "deployedSourceMap": "27:112:1:-;;;;;;;;;;;;;;;;;;;;;;;;106:30;;8:9:-1;5:2;;;30:1;27;20:12;5:2;106:30:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
+  "source": "pragma solidity ^0.4.23;\n\n\ncontract SOWFactoryData {\n     mapping(address => address[]) _perAddress;\n     address[] public _sowContracts;\n}",
   "sourcePath": "/Users/dennismacpro/Ascension/SOW-Demo/sow-contracts/contracts/factory/sow.factory.data.sol",
   "ast": {
     "absolutePath": "/Users/dennismacpro/Ascension/SOW-Demo/sow-contracts/contracts/factory/sow.factory.data.sol",
     "exportedSymbols": {
       "SOWFactoryData": [
-        62
+        67
       ]
     },
-    "id": 63,
+    "id": 68,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -54,20 +54,75 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 62,
+        "id": 67,
         "linearizedBaseContracts": [
-          62
+          67
         ],
         "name": "SOWFactoryData",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 61,
+            "id": 63,
+            "name": "_perAddress",
+            "nodeType": "VariableDeclaration",
+            "scope": 67,
+            "src": "58:41:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_array$_t_address_$dyn_storage_$",
+              "typeString": "mapping(address => address[])"
+            },
+            "typeName": {
+              "id": 62,
+              "keyType": {
+                "id": 59,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "66:7:1",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "58:29:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_array$_t_address_$dyn_storage_$",
+                "typeString": "mapping(address => address[])"
+              },
+              "valueType": {
+                "baseType": {
+                  "id": 60,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "77:7:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "id": 61,
+                "length": null,
+                "nodeType": "ArrayTypeName",
+                "src": "77:9:1",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                  "typeString": "address[]"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 66,
             "name": "_sowContracts",
             "nodeType": "VariableDeclaration",
-            "scope": 62,
-            "src": "58:30:1",
+            "scope": 67,
+            "src": "106:30:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -76,19 +131,19 @@
             },
             "typeName": {
               "baseType": {
-                "id": 59,
+                "id": 64,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
-                "src": "58:7:1",
+                "src": "106:7:1",
                 "typeDescriptions": {
                   "typeIdentifier": "t_address",
                   "typeString": "address"
                 }
               },
-              "id": 60,
+              "id": 65,
               "length": null,
               "nodeType": "ArrayTypeName",
-              "src": "58:9:1",
+              "src": "106:9:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
                 "typeString": "address[]"
@@ -98,20 +153,20 @@
             "visibility": "public"
           }
         ],
-        "scope": 63,
-        "src": "27:64:1"
+        "scope": 68,
+        "src": "27:112:1"
       }
     ],
-    "src": "0:91:1"
+    "src": "0:139:1"
   },
   "legacyAST": {
     "absolutePath": "/Users/dennismacpro/Ascension/SOW-Demo/sow-contracts/contracts/factory/sow.factory.data.sol",
     "exportedSymbols": {
       "SOWFactoryData": [
-        62
+        67
       ]
     },
-    "id": 63,
+    "id": 68,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -131,20 +186,75 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 62,
+        "id": 67,
         "linearizedBaseContracts": [
-          62
+          67
         ],
         "name": "SOWFactoryData",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 61,
+            "id": 63,
+            "name": "_perAddress",
+            "nodeType": "VariableDeclaration",
+            "scope": 67,
+            "src": "58:41:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_array$_t_address_$dyn_storage_$",
+              "typeString": "mapping(address => address[])"
+            },
+            "typeName": {
+              "id": 62,
+              "keyType": {
+                "id": 59,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "66:7:1",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "58:29:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_array$_t_address_$dyn_storage_$",
+                "typeString": "mapping(address => address[])"
+              },
+              "valueType": {
+                "baseType": {
+                  "id": 60,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "77:7:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "id": 61,
+                "length": null,
+                "nodeType": "ArrayTypeName",
+                "src": "77:9:1",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                  "typeString": "address[]"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 66,
             "name": "_sowContracts",
             "nodeType": "VariableDeclaration",
-            "scope": 62,
-            "src": "58:30:1",
+            "scope": 67,
+            "src": "106:30:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -153,19 +263,19 @@
             },
             "typeName": {
               "baseType": {
-                "id": 59,
+                "id": 64,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
-                "src": "58:7:1",
+                "src": "106:7:1",
                 "typeDescriptions": {
                   "typeIdentifier": "t_address",
                   "typeString": "address"
                 }
               },
-              "id": 60,
+              "id": 65,
               "length": null,
               "nodeType": "ArrayTypeName",
-              "src": "58:9:1",
+              "src": "106:9:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
                 "typeString": "address[]"
@@ -175,11 +285,11 @@
             "visibility": "public"
           }
         ],
-        "scope": 63,
-        "src": "27:64:1"
+        "scope": 68,
+        "src": "27:112:1"
       }
     ],
-    "src": "0:91:1"
+    "src": "0:139:1"
   },
   "compiler": {
     "name": "solc",
@@ -187,7 +297,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.2",
-  "updatedAt": "2019-04-01T00:30:14.250Z",
+  "updatedAt": "2019-05-06T23:42:09.776Z",
   "devdoc": {
     "methods": {}
   },

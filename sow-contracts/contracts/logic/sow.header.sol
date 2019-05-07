@@ -10,5 +10,10 @@ contract SOWHeader {
     event SOWStartDateSet(uint256 indexed startDate, string indexed contractName);
     event SOWEndDateSet(uint256 indexed startDate, string indexed contractName);
     event SOWRateSet(uint256 indexed startDate, string indexed contractName);
-    
+    enum States {
+        Proposed,
+        Accepted,
+        Active,
+        Expired       
+    }
 }
